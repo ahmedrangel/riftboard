@@ -3,6 +3,7 @@ import icons from "./icons";
 
 export default defineNuxtConfig({
   modules: [
+    "nuxt-twitch-ext",
     "@nuxt/ui",
     "@nuxt/eslint",
     "@nuxt/icon",
@@ -14,11 +15,25 @@ export default defineNuxtConfig({
 
   $production: {
     nitro: {
-      preset: "cloudflare-module"
+      prerender: {
+        autoSubfolderIndex: false,
+        crawlLinks: false,
+        routes: ["/sitemap.xml"]
+      },
+      cloudflare: {
+        pages: {
+          routes: {
+            exclude: ["/images/*", "/icons/*"]
+          }
+        }
+      },
+      experimental: {
+        websocket: true
+      }
     }
   },
 
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   app: {
     head: {
@@ -26,7 +41,8 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
       title: `${SITE.name} | ${SITE.main}`,
       htmlAttrs: {
-        lang: "es"
+        lang: "es",
+        class: "dark"
       },
       link: [
         { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" },
@@ -77,6 +93,10 @@ export default defineNuxtConfig({
     session: {
       password: "",
       maxAge: 60 * 60 * 24 * 30 // 30 days
+    },
+    twitchExt: {
+      clientId: "",
+      secretKey: ""
     }
   },
 
@@ -89,24 +109,6 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: "2026-09-19",
-
-  nitro: {
-    prerender: {
-      autoSubfolderIndex: false,
-      crawlLinks: false,
-      routes: ["/sitemap.xml"]
-    },
-    cloudflare: {
-      pages: {
-        routes: {
-          exclude: ["/images/*", "/icons/*"]
-        }
-      }
-    },
-    experimental: {
-      websocket: true
-    }
-  },
 
   hub: {
     kv: true
@@ -137,5 +139,15 @@ export default defineNuxtConfig({
       { label: "Priority", select: "sitemap:priority", width: "12.5%" },
       { label: "Last Modified", select: "sitemap:lastmod", width: "35%" }
     ]
+  },
+
+  twitchExt: {
+    ebs: {
+      baseURL: SITE.host,
+      preflight: {
+        allowMethods: ["GET", "POST"],
+        allowHeaders: ["Content-Type", "Authorization", "Channel-Id"]
+      }
+    }
   }
 });

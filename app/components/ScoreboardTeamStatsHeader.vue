@@ -11,29 +11,29 @@ const props = defineProps<{
 }>();
 
 const statsMap = [
-  { type: "dragons", title: "Dragons", icon: "/icons/dragon.png" },
-  { type: "heralds", title: "Heralds", icon: "/icons/riftherald.png" },
-  { type: "grubs", title: "Grubs", icon: "/icons/grub.png" },
-  { type: "turrets", title: "Turrets", icon: "/icons/tower.png" }
+  { type: "dragons", title: "Dragons", icon: "./icons/dragon.png" },
+  { type: "heralds", title: "Heralds", icon: "./icons/riftherald.png" },
+  { type: "grubs", title: "Grubs", icon: "./icons/grub.png" },
+  { type: "turrets", title: "Turrets", icon: "./icons/tower.png" }
 ];
 
 const dragonIconMap = [
-  { type: "Fire", title: "Infernal Dragon", icon: "/icons/dragon_infernal.png" },
-  { type: "Earth", title: "Mountain Dragon", icon: "/icons/dragon_mountain.png" },
-  { type: "Water", title: "Ocean Dragon", icon: "/icons/dragon_ocean.png" },
-  { type: "Air", title: "Cloud Dragon", icon: "/icons/dragon_cloud.png" },
-  { type: "Hextech", title: "Hextech Dragon", icon: "/icons/dragon_hextech.png" },
-  { type: "Chemtech", title: "Chemtech Dragon", icon: "/icons/dragon_chemtech.png" },
-  { type: "Elder", title: "Elder Dragon", icon: "/icons/dragon_elder.png" }
+  { type: "Fire", title: "Infernal Dragon", icon: "./icons/dragon_infernal.png" },
+  { type: "Earth", title: "Mountain Dragon", icon: "./icons/dragon_mountain.png" },
+  { type: "Water", title: "Ocean Dragon", icon: "./icons/dragon_ocean.png" },
+  { type: "Air", title: "Cloud Dragon", icon: "./icons/dragon_cloud.png" },
+  { type: "Hextech", title: "Hextech Dragon", icon: "./icons/dragon_hextech.png" },
+  { type: "Chemtech", title: "Chemtech Dragon", icon: "./icons/dragon_chemtech.png" },
+  { type: "Elder", title: "Elder Dragon", icon: "./icons/dragon_elder.png" }
 ];
 
 const dragonSoulsIconMap = [
-  { type: "Fire", title: "Infernal Soul", icon: "/icons/dragonsouliconinfernal.png" },
-  { type: "Earth", title: "Mountain Soul", icon: "/icons/dragonsouliconmountain.png" },
-  { type: "Water", title: "Ocean Soul", icon: "/icons/dragonsouliconocean.png" },
-  { type: "Air", title: "Cloud Soul", icon: "/icons/dragonsouliconcloud.png" },
-  { type: "Hextech", title: "Hextech Soul", icon: "/icons/dragonsouliconhextech.png" },
-  { type: "Chemtech", title: "Chemtech Soul", icon: "/icons/dragonsouliconchemtech.png" }
+  { type: "Fire", title: "Infernal Soul", icon: "./icons/dragonsouliconinfernal.png" },
+  { type: "Earth", title: "Mountain Soul", icon: "./icons/dragonsouliconmountain.png" },
+  { type: "Water", title: "Ocean Soul", icon: "./icons/dragonsouliconocean.png" },
+  { type: "Air", title: "Cloud Soul", icon: "./icons/dragonsouliconcloud.png" },
+  { type: "Hextech", title: "Hextech Soul", icon: "./icons/dragonsouliconhextech.png" },
+  { type: "Chemtech", title: "Chemtech Soul", icon: "./icons/dragonsouliconchemtech.png" }
 ];
 
 const blueDragons = computed(() => props.teams.blue.dragonTypes?.filter(type => type !== "Elder") || []);
