@@ -1,8 +1,8 @@
 {
   "private": true,
-  "name": "lolscoreboard",
+  "name": "riftboard",
   "version": "1.0.0",
-  "description": "LoLScoreboard",
+  "description": "RiftBoard",
   "type": "module",
   "license": "MIT",
   "author": {
@@ -13,12 +13,12 @@
   "contributors": [
     "Ahmed Rangel <ahmedrangel@outlook.com>"
   ],
-  "homepage": "https://github.com/ahmedrangel/lolscoreboard",
+  "homepage": "https://github.com/ahmedrangel/riftboard",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ahmedrangel/lolscoreboard.git"
+    "url": "git+https://github.com/ahmedrangel/riftboard.git"
   },
-  "bugs": "https://github.com/ahmedrangel/lolscoreboard/issues",
+  "bugs": "https://github.com/ahmedrangel/riftboard/issues",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev --port=5173 --public",
@@ -45,6 +45,7 @@
     "eslint": "^10.10.0",
     "nuxt": "^4.5.2",
     "nuxt-auth-utils": "^0.5.30",
+    "nuxt-twitch-ext": "^0.2.5",
     "nuxt-ui-colors-no-inline": "^0.0.6",
     "sass-embedded": "^1.104.1",
     "stylelint": "^17.15.0",

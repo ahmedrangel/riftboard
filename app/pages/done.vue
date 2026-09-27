@@ -13,7 +13,7 @@ onBeforeMount(() => {
 
 onMounted(async () => {
   // Verify with the local service using the session ID (sid)
-  const response = await $fetch<{ verified: boolean }>(`${SITE.localhost}/verify`, { method: "POST", body: { sid: sid } }).catch(() => null);
+  const response = await $fetch<{ verified: boolean }>(`${SITE.localService}/verify`, { method: "POST", body: { sid: sid } }).catch(() => null);
   verified.value = response?.verified ?? false;
   if (!verified.value) {
     throw createError({

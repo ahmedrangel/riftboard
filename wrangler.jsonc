@@ -1,13 +1,13 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "lolscoreboard",
+  "name": "riftboard",
   "compatibility_date": "2026-09-19",
   "main": ".output/server/index.mjs",
   "compatibility_flags": ["nodejs_compat"],
   "observability": { "enabled": true },
   "routes": [
     {
-      "pattern": "lolscoreboard.ahmedrangel.com",
+      "pattern": "riftboard.ahmedrangel.com",
       "custom_domain": true
     }
   ],
