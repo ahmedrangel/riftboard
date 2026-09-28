@@ -49,7 +49,7 @@
     "eslint": "^10.10.0",
     "nuxt": "^4.5.2",
     "nuxt-auth-utils": "^0.5.30",
-    "nuxt-twitch-ext": "^0.2.6",
+    "nuxt-twitch-ext": "^0.2.9",
     "nuxt-ui-colors-no-inline": "^0.0.6",
     "sass-embedded": "^1.104.1",
     "stylelint": "^17.15.0",
