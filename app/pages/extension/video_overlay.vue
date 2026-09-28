@@ -81,11 +81,13 @@ const slideMenuItems = [
     <ClientOnly>
       <SlideMenu v-model="slideOpen" :items="slideMenuItems">
         <template #scoreboard>
-          <div v-if="loading" class="absolute inset-0 flex items-center justify-center z-50">
-            <Icon name="material-symbols-light:data-usage" size="60" class="animate-spin inline-block" />
-          </div>
-          <div v-else-if="scoreboardOpen && !loading">
-            <ScoreboardMain :data="data" :downscale="8" />
+          <div>
+            <div v-if="loading" class="absolute inset-0 flex items-center justify-center z-50">
+              <Icon name="material-symbols-light:data-usage" size="60" class="animate-spin inline-block" />
+            </div>
+            <div v-else-if="scoreboardOpen && !loading">
+              <ScoreboardMain :data="data" :downscale="8" />
+            </div>
           </div>
         </template>
       </SlideMenu>

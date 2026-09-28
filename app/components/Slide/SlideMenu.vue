@@ -45,7 +45,7 @@ interface MenuItem {
         </UButton>
       </div>
     </template>
-    <TransitionGroup name="fade">
+    <TransitionGroup name="fade" tag="div">
       <slot :name="menuSelected" />
     </TransitionGroup>
   </USlideover>

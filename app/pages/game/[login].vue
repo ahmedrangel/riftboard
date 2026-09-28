@@ -12,10 +12,7 @@ const wsURL = `${protocol}://${SITE.domain}/ws/${login}`;
 
 onMounted(() => {
   useWebSocket(wsURL, {
-    autoReconnect: {
-      retries: 10,
-      delay: 1000
-    },
+    autoReconnect: { retries: 10, delay: 1000 },
     onMessage: (_, event) => {
       try {
         const { data: parsedData } = JSON.parse(event.data);
