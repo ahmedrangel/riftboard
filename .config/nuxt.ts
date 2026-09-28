@@ -13,6 +13,14 @@ export default defineNuxtConfig({
     "nuxt-auth-utils"
   ],
 
+  $development: {
+    nitro: {
+      experimental: {
+        websocket: true
+      }
+    }
+  },
+
   $production: {
     nitro: {
       prerender: {
@@ -122,7 +130,7 @@ export default defineNuxtConfig({
   },
 
   icon: {
-    mode: "svg",
+    mode: "css",
     provider: "none",
     clientBundle: { icons }
   },

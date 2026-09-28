@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useWebSocket } from "@vueuse/core";
 
-useHead({ title: "League Scoreboard" });
+useHead({ title: "RiftBoard" });
 
 const { login } = useRoute("game-login").params;
 
@@ -9,6 +9,7 @@ const { data: fetchedData } = await useFetch(`/api/game/${login}`);
 const data = ref<GameData | null>(fetchedData.value ?? null);
 const protocol = import.meta.dev ? "ws" : "wss";
 const wsURL = `${protocol}://${SITE.domain}/ws/${login}`;
+
 onMounted(() => {
   useWebSocket(wsURL, {
     autoReconnect: {
@@ -38,7 +39,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <main>
-    <ScoreboardMain v-if="data" :data="data" />
-  </main>
+  <UMain>
+    <ClientOnly>
+      <ScoreboardMain v-if="data" :data="data" />
+    </ClientOnly>
+  </UMain>
 </template>

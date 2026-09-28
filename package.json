@@ -36,6 +36,7 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260919.1",
+    "@iconify-json/material-symbols-light": "^1.2.94",
     "@nuxt/eslint": "^1.17.0",
     "@nuxt/ui": "^4.11.1",
     "@nuxthub/core": "^0.10.8",
