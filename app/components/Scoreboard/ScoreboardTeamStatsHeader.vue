@@ -59,12 +59,11 @@ const dragonSoulNotConsumed = computed(() => blueDragons.value.length <= maxDrag
         </div>
       </div>
     </div>
-    <div class="mx-6 flex h-16 w-16 rotate-45 items-center justify-center border-2 border-slate-300/80 bg-slate-950 overflow-hidden">
+    <div class="mx-6 flex h-16 w-16 rotate-45 items-center justify-center border-2 border-slate-300/50 bg-slate-950 overflow-hidden">
       <span class="-rotate-45">
         <img v-if="dragonSoul || dragonSoulNotConsumed" :src="dragonSoul?.icon || dragonSoulNotConsumed?.icon" class="h-full w-full scale-110" :class="{ grayscale: !dragonSoul && dragonSoulNotConsumed }" :title="dragonSoul?.title || dragonSoulNotConsumed?.title">
       </span>
     </div>
-
     <div class="flex items-center">
       <div class="flex items-center gap-6">
         <div v-for="dot in 4" :key="`red-dragons-${dot}`" class="h-16 w-16 rounded-full border border-slate-800/80 bg-slate-950">
