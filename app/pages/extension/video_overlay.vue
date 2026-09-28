@@ -65,15 +65,15 @@ watch(scoreboardOpen, async () => {
   });
 });
 
-const slideMenuItems = ref([
+const slideMenuItems = [
   {
     id: "scoreboard",
     title: "Scoreboard",
     icon: "material-symbols-light:space-dashboard",
-    onClick: () => scoreboardOpen.value = !scoreboardOpen.value,
+    onClick: () => scoreboardOpen.value = true,
     onClose: () => scoreboardOpen.value = false
   }
-]);
+];
 </script>
 
 <template>

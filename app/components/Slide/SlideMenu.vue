@@ -3,17 +3,23 @@ const props = defineProps<{
   items: MenuItem[];
   modelValue: boolean;
 }>();
+
 const menuSelected = ref<string | null>(null);
 const open = computed(() => props.modelValue);
 
 const menuItemOpen = (item: MenuItem) => {
-  menuSelected.value = menuSelected.value === item.id ? null : item.id;
-  item.onClick();
+  if (menuSelected.value === item.id) {
+    menuSelected.value = null;
+    item.onClose?.();
+    return;
+  }
+  menuSelected.value = item.id;
+  item.onClick?.();
 };
 
 const menuItemClose = (item: MenuItem) => {
   menuSelected.value = null;
-  item.onClose();
+  item.onClose?.();
 };
 
 interface MenuItem {
@@ -21,7 +27,7 @@ interface MenuItem {
   title: string;
   icon: string;
   onClick: () => void;
-  onClose: () => void;
+  onClose?: () => void;
 }
 </script>
 
@@ -34,7 +40,7 @@ interface MenuItem {
             <Icon :name="item.icon" size="40" />
           </UButton>
         </template>
-        <UButton v-if="menuSelected" color="neutral" class="shadow rounded-none focus-visible:outline-none hover:bg-red-900 hover:text-white border border-white/20" @click="menuItemClose(props.items.find(item => item.id === 'scoreboard')!)">
+        <UButton v-if="menuSelected" color="neutral" class="shadow rounded-none focus-visible:outline-none hover:bg-red-900 hover:text-white border border-white/20" @click="menuItemClose(props.items.find(item => item.id === menuSelected)!)">
           <Icon name="material-symbols-light:close" size="40" />
         </UButton>
       </div>
