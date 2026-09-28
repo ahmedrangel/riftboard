@@ -2,26 +2,26 @@
 import { useWindowSize } from "@vueuse/core";
 
 const props = defineProps<{
-  data: GameData;
+  data: GameData | null;
   downscale?: number;
 }>();
 
 const { width } = useWindowSize();
 const scale = computed(() => width.value / 1920);
 
-const bluePlayers = computed(() => props.data.players.filter(player => player.team === "blue"));
-const redPlayers = computed(() => props.data.players.filter(player => player.team === "red"));
+const bluePlayers = computed(() => props.data?.players.filter(player => player.team === "blue") || []);
+const redPlayers = computed(() => props.data?.players.filter(player => player.team === "red") || []);
 const downscale = computed(() => (props.downscale || 0) / 100);
 </script>
 
 <template>
-  <ClientOnly>
-    <div class="relative h-dvh w-full overflow-hidden">
-      <div
-        id="scoreboard"
-        class="border border-slate-600/70 text-slate-200 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 w-[1920px]"
-        :style="{ transform: `scale(${scale - downscale})` }"
-      >
+  <div class="relative h-dvh w-full overflow-hidden">
+    <div
+      id="scoreboard"
+      class="border border-slate-600/70 text-slate-200 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2 w-[1920px]"
+      :style="{ transform: `scale(${scale - downscale})` }"
+    >
+      <template v-if="data?.game?.started">
         <ScoreboardTeamStatsHeader :teams="data.teams" :game="data.game" />
         <div class="grid grid-cols-2">
           <section class="min-w-0 border-r border-slate-500/40">
@@ -31,9 +31,17 @@ const downscale = computed(() => (props.downscale || 0) / 100);
             <ScoreboardPlayerRow :players="redPlayers" :cdn="data.resources.cdn" :version="data.game.version" />
           </section>
         </div>
-      </div>
+      </template>
+      <template v-else>
+        <div v-if="data?.account?.gameName && data.account.tagLine" class="flex items-center justify-center h-96 text-3xl text-slate-200 font-semibold">
+          <span class="text-slate-50 font-bold">{{ data.account.gameName }}#{{ data.account.tagLine }}</span>&nbsp;is not currently in a game.
+        </div>
+        <div v-else class="flex items-center justify-center h-96 text-3xl text-slate-200 font-semibold">
+          No game data available.
+        </div>
+      </template>
     </div>
-  </ClientOnly>
+  </div>
 </template>
 
 <style scoped>

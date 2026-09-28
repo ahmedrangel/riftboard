@@ -41,7 +41,7 @@ onMounted(() => {
 <template>
   <UMain>
     <ClientOnly>
-      <ScoreboardMain v-if="data" :data="data" />
+      <ScoreboardMain :data="data" />
     </ClientOnly>
   </UMain>
 </template>

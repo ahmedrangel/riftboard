@@ -6,7 +6,7 @@ useHead({ bodyAttrs: { class: "bg-transparent" } });
 
 const twitch = useTwitch();
 
-const data = ref<GameData | null>();
+const data = ref<GameData | null>(null);
 const protocol = import.meta.dev ? "ws" : "wss";
 const broadcaster = ref<ExcludeFn<HelixUser> | null>(null);
 const slideOpen = ref(true);
@@ -84,7 +84,7 @@ const slideMenuItems = [
           <div v-if="loading" class="absolute inset-0 flex items-center justify-center z-50">
             <Icon name="material-symbols-light:data-usage" size="60" class="animate-spin inline-block" />
           </div>
-          <div v-else-if="data && scoreboardOpen && !loading">
+          <div v-else-if="scoreboardOpen && !loading">
             <ScoreboardMain :data="data" :downscale="8" />
           </div>
         </template>

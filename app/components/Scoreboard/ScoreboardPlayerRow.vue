@@ -61,6 +61,9 @@ const version = computed(() => props.version);
           <span v-if="slot === 7" class="absolute bottom-0 left-1/2 -translate-x-1/2 px-1.5 text-3xl font-bold leading-5 text-white text-stroke tabular-nums">
             {{ Math.round(player.scores.wardScore) }}
           </span>
+          <span v-else-if="(player.items.find(item => item.slot === slot - 1)?.count || 0) > 1" class="absolute bottom-0 right-0 px-1.5 text-xl font-bold text-white text-stroke tabular-nums">
+            {{ player.items.find(item => item.slot === slot - 1)?.count }}
+          </span>
         </div>
       </div>
     </div>

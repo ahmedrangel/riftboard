@@ -47,10 +47,11 @@ const maxDragons = 4;
 const dragonSoul = computed(() => blueDragons.value.length > maxDragons - 1 || redDragons.value.length > maxDragons - 1 ? dragonSoulsIconMap.find(item => item.type === props.game.dragonSoul) : null);
 const dragonSoulNotConsumed = computed(() => blueDragons.value.length <= maxDragons - 1 && redDragons.value.length <= maxDragons - 1 && props.game.dragonSoul ? dragonSoulsIconMap.find(item => item.type === props.game.dragonSoul) : null);
 
-const gameCurrentTime = ref<number>(0);
+const gameStartedAt = computed(() => new Date(props.game.startedAt).getTime());
+const gameCurrentTime = ref<number | null>(null);
 onMounted(() => {
   setInterval(() => {
-    gameCurrentTime.value = Date.now() - new Date(props.game.startedAt).getTime();
+    gameCurrentTime.value = props.game.started ? Date.now() - gameStartedAt.value : null;
   }, 500);
 });
 </script>
@@ -86,7 +87,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="absolute right-0 p-5 text-2xl font-semibold flex items-end gap-1">
+    <div v-if="gameCurrentTime" class="absolute right-0 p-5 text-2xl font-semibold flex items-end gap-1">
       <Icon name="material-symbols-light:timer" size="30" />
       <span class="tabular-nums">
         {{ new Date(gameCurrentTime).toLocaleTimeString([], { minute: "2-digit", second: "2-digit" }) }}

@@ -2,6 +2,10 @@ import type { User as AuthUser } from "#auth-utils";
 
 declare global {
   interface GameData {
+    account: {
+      gameName: string;
+      tagLine: string;
+    };
     game: {
       version: string;
       started: boolean;
