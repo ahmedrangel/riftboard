@@ -35,28 +35,28 @@
     "test:types": "vue-tsc -b --noEmit"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20260919.1",
+    "@cloudflare/workers-types": "^5.20260928.1",
     "@iconify-json/material-symbols-light": "^1.2.94",
     "@nuxt/eslint": "^1.17.0",
-    "@nuxt/ui": "^4.11.1",
+    "@nuxt/ui": "^4.11.2",
     "@nuxthub/core": "^0.10.8",
     "@nuxtjs/sitemap": "^8.5.1",
     "@twurple/api": "^8.2.0",
     "@twurple/auth-ext": "^8.2.0",
-    "@types/node": "^26.6.1",
+    "@types/node": "^26.6.3",
     "@vueuse/core": "^15.0.0",
     "crossws": "^0.4.12",
-    "eslint": "^10.10.0",
+    "eslint": "^10.11.0",
     "nuxt": "^4.5.2",
     "nuxt-auth-utils": "^0.5.30",
-    "nuxt-twitch-ext": "^0.2.9",
+    "nuxt-twitch-ext": "^0.2.10",
     "nuxt-ui-colors-no-inline": "^0.0.6",
-    "sass-embedded": "^1.104.1",
+    "sass-embedded": "^1.105.0",
     "stylelint": "^17.15.0",
     "stylelint-config-standard-scss": "^17.0.0",
     "typescript": "^6.0.3",
     "vue-tsc": "^3.3.11",
-    "wrangler": "^4.134.0"
+    "wrangler": "^4.143.0"
   },
-  "packageManager": "pnpm@12.4.2"
+  "packageManager": "pnpm@12.6.0"
 }
