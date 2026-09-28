@@ -209,8 +209,8 @@ importers:
         specifier: ^0.5.30
         version: 0.5.30(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1)))
       nuxt-twitch-ext:
-        specifier: ^0.2.5
-        version: 0.2.5(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1)))
+        specifier: ^0.2.6
+        version: 0.2.6(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1)))
       nuxt-ui-colors-no-inline:
         specifier: ^0.0.6
         version: 0.0.6(79e93f5292210efb35f8c38a61a5ebe7)
@@ -4939,8 +4939,8 @@ packages:
     peerDependencies:
       vue: ^3.5.30
 
-  nuxt-twitch-ext@0.2.5:
-    resolution: {integrity: sha512-NQs246er5djlJ3ipTFpsuUKXAJQXslHSUvaQww2J8b15b+TXM11Pm6wm6zd62+RsI03QHCn5D9XKLImXF/JcFQ==}
+  nuxt-twitch-ext@0.2.6:
+    resolution: {integrity: sha512-5nkSr3HgUL94nbSOAMaKwQkWZgkaIRQ7xgXGa1XqPOUFk+IvFsDv6XTPK3F4A9EBtU2fBIPYjvAE1BHvhlcqjw==}
     hasBin: true
 
   nuxt-ui-colors-no-inline@0.0.6:
@@ -11724,7 +11724,7 @@ snapshots:
       - vite
       - zod
 
-  nuxt-twitch-ext@0.2.5(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1))):
+  nuxt-twitch-ext@0.2.6(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1))):
     dependencies:
       '@nuxt/kit': 4.5.2(magic-string@1.4.1)(magicast@0.5.5)(rolldown@1.2.9)(unplugin@3.4.0(esbuild@0.28.2)(rolldown@1.2.9)(rollup@4.63.4)(vite@8.3.0(@types/node@26.6.2)(esbuild@0.28.2)(jiti@2.7.0)(sass-embedded@1.104.1)(sass@1.104.1)(terser@5.51.2)(yaml@2.9.1)))
       '@types/twitch-ext': 1.24.9

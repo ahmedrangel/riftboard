@@ -5,6 +5,7 @@ declare global {
     game: {
       version: string;
       started: boolean;
+      startedAt: string;
       dragonSoul: string;
     };
     resources: {
