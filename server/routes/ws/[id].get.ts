@@ -15,11 +15,9 @@ const proxy = createWebSocketProxy({
     return target.replace(/^https:/, "wss:");
   }
 });
+
 proxy.error = (peer) => {
   peer.close(1013, "Target unavailable");
 };
 
-export default defineWebSocketHandler(
-  // @ts-expect-error imports break TypeScript type checking
-  proxy
-);
+export default defineWebSocketHandler(proxy);
