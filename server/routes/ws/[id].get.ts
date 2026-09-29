@@ -1,7 +1,7 @@
 import { createWebSocketProxy } from "crossws";
 
 const proxy = createWebSocketProxy({
-  connectTimeout: 5000, // Set the connection timeout to 5 seconds
+  connectTimeout: 10000, // Set the connection timeout to 10 seconds
   target: async (peer) => {
     const { pathname } = new URL(peer.request.url);
     const id = pathname.split("/").filter(Boolean).pop();
