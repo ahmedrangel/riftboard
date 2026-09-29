@@ -7,7 +7,6 @@ export default defineNuxtConfig({
     "@nuxt/ui",
     "@nuxt/eslint",
     "@nuxt/icon",
-    "@nuxtjs/sitemap",
     "@nuxthub/core",
     "nuxt-ui-colors-no-inline",
     "nuxt-auth-utils"
@@ -25,8 +24,7 @@ export default defineNuxtConfig({
     nitro: {
       prerender: {
         autoSubfolderIndex: false,
-        crawlLinks: false,
-        routes: ["/sitemap.xml"]
+        crawlLinks: false
       },
       cloudflare: {
         pages: {
@@ -133,20 +131,6 @@ export default defineNuxtConfig({
     mode: "css",
     provider: "none",
     clientBundle: { icons }
-  },
-
-  sitemap: {
-    discoverImages: false,
-    zeroRuntime: true,
-    urls: [
-      { loc: "/", priority: 1 }
-    ],
-    defaults: { priority: 0.8, lastmod: new Date().toISOString() },
-    xslColumns: [
-      { label: "URL", width: "65%" },
-      { label: "Priority", select: "sitemap:priority", width: "12.5%" },
-      { label: "Last Modified", select: "sitemap:lastmod", width: "35%" }
-    ]
   },
 
   twitchExt: {
