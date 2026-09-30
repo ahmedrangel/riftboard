@@ -70,7 +70,7 @@ onMounted(() => {
     </div>
     <div class="mx-6 flex h-16 w-16 rotate-45 items-center justify-center border-2 border-slate-300/50 bg-slate-950 overflow-hidden">
       <span class="-rotate-45">
-        <img v-if="dragonSoul || dragonSoulNotConsumed" :src="dragonSoul?.icon || dragonSoulNotConsumed?.icon" class="h-full w-full scale-110" :class="{ grayscale: !dragonSoul && dragonSoulNotConsumed }" :title="dragonSoul?.title || dragonSoulNotConsumed?.title">
+        <img v-if="dragonSoul || dragonSoulNotConsumed" :src="extAsset(dragonSoul?.icon || dragonSoulNotConsumed!.icon)" class="h-full w-full scale-110" :class="{ grayscale: !dragonSoul && dragonSoulNotConsumed }" :title="dragonSoul?.title || dragonSoulNotConsumed?.title">
       </span>
     </div>
     <div class="flex items-center">
