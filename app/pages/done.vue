@@ -7,10 +7,6 @@ const loading = ref(true);
 const verified = ref(false);
 const { sid } = useRoute().query;
 
-onBeforeMount(() => {
-  window.history.replaceState({}, document.title, window.location.pathname);
-});
-
 onMounted(async () => {
   // Verify with the local service using the session ID (sid)
   const response = await $fetch<{ verified: boolean }>(`${SITE.localService}/verify`, { method: "POST", body: { sid: sid } }).catch(() => null);
