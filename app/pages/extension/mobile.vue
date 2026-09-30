@@ -14,11 +14,13 @@ const socket = ref<ReturnType<typeof useWebSocket> | null>(null);
 const loading = ref(false);
 
 onMounted(async () => {
+  loading.value = true;
   Twitch.ext.onAuthorized(async (auth) => {
     extAuth.value = auth;
     twitch.init(auth.clientId);
     if (!broadcaster.value) {
       broadcaster.value = await twitch.getUserById(auth.channelId);
+      loading.value = false;
     }
     loading.value = true;
     const wsURL = `${protocol}://${SITE.domain}/ws/${broadcaster.value!.name}`;
