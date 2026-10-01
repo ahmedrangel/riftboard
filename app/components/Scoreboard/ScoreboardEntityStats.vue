@@ -8,15 +8,7 @@ const statsMap = [
 
 defineProps<{
   name: string;
-  team: {
-    score: number;
-    dragons: number;
-    dragonTypes: string[];
-    grubs: number;
-    heralds: number;
-    barons: number;
-    turrets: number;
-  };
+  team: TeamStats;
   reverse?: boolean;
 }>();
 </script>

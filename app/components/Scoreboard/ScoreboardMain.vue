@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useWindowSize } from "@vueuse/core";
+import { useElementSize, useWindowSize } from "@vueuse/core";
 
 const props = defineProps<{
   data: GameData | null;
@@ -8,19 +8,33 @@ const props = defineProps<{
 }>();
 
 const { width, height } = useWindowSize();
-const scale = computed(() => props.isMobile ? height.value / 1920 : width.value / 1920);
+
+const content = ref<HTMLElement | null>(null);
+const { height: contentHeight } = useElementSize(content, undefined, { box: "border-box" });
+
+const baseWidth = computed(() => props.isMobile ? 1080 : 1920);
+const downscale = computed(() => (props.downscale || 0) / 100);
+
+const scale = computed(() => {
+  const scaleX = width.value / baseWidth.value;
+  if (!props.isMobile || !contentHeight.value) return scaleX;
+  const scaleY = height.value / contentHeight.value;
+  return Math.min(scaleX, scaleY);
+});
+
+const finalScale = computed(() => Math.max(scale.value - downscale.value, 0.01));
 
 const bluePlayers = computed(() => props.data?.players.filter(player => player.team === "blue") || []);
 const redPlayers = computed(() => props.data?.players.filter(player => player.team === "red") || []);
-const downscale = computed(() => (props.downscale || 0) / 100);
 </script>
 
 <template>
   <div class="relative h-dvh w-full" :class="{ 'overflow-hidden': !isMobile }">
     <div
-      class="border border-slate-600/70 text-slate-200 bg-neutral-900"
-      :class="isMobile ? 'w-full min-w-270 -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2' : 'w-[1920px] -translate-x-1/2 -translate-y-1/2 absolute top-1/2 left-1/2'"
-      :style="isMobile ? { transform: `scale(${scale - downscale})` } : { transform: `scale(${scale - downscale})` }"
+      ref="content"
+      class="absolute top-1/2 left-1/2 border border-slate-600/70 text-slate-200 bg-neutral-900 rounded-md overflow-hidden"
+      :class="isMobile ? 'w-[1080px]' : 'w-[1920px]'"
+      :style="{ transform: `translate(-50%, -50%) scale(${finalScale})` }"
     >
       <template v-if="data?.game?.started">
         <ScoreboardTeamStatsHeader class="scoreboard" :teams="data.teams" :game="data.game" :is-mobile="isMobile" />
@@ -28,13 +42,13 @@ const downscale = computed(() => (props.downscale || 0) / 100);
           <div>
             <div class="min-w-0" :class="{ 'border-r border-slate-500/40': !isMobile }">
               <ScoreboardEntityStats v-if="isMobile" name="blue" :team="data.teams.blue" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" />
-              <ScoreboardPlayerRow :players="bluePlayers" :cdn="data.resources.cdn" :version="data.game.version" />
+              <ScoreboardPlayerRow :account="data.account" :players="bluePlayers" :cdn="data.resources.cdn" :version="data.game.version" />
             </div>
           </div>
           <div class="mt-auto">
             <div class="min-w-0">
               <ScoreboardEntityStats v-if="isMobile" name="red" :team="data.teams.red" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" />
-              <ScoreboardPlayerRow :players="redPlayers" :cdn="data.resources.cdn" :version="data.game.version" />
+              <ScoreboardPlayerRow :account="data.account" :players="redPlayers" :cdn="data.resources.cdn" :version="data.game.version" />
             </div>
           </div>
         </div>

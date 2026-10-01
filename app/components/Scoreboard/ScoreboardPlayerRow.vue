@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
+  account: GameData["account"];
   players: Player[];
   cdn: string;
   version: string;
@@ -11,7 +12,7 @@ const version = computed(() => props.version);
 </script>
 
 <template>
-  <div v-for="player in players" :key="player.riotIdGameName" class="scoreboard__row flex items-center justify-between border-b border-slate-500/20 p-3 gap-3" :class="{ 'bg-red-800/20': player.isDead }">
+  <div v-for="player in players" :key="player.riotIdGameName" class="scoreboard__row flex items-center justify-between border-b border-slate-500/20 p-3 gap-3" :class="{ 'bg-red-800/20': player.isDead, 'border border-zinc-200/50': player.riotIdGameName === account.gameName && player.riotIdTagLine === account.tagLine, 'bg-white/5': !player.isDead && (player.riotIdGameName === account.gameName && player.riotIdTagLine === account.tagLine) }">
     <div class="order-1 flex gap-1">
       <div class="flex shrink-0 flex-col gap-1">
         <div v-for="spell in Object.values(player.summonerSpells)" :key="`${player.riotIdGameName}-${spell.displayName}`" class="h-10 w-10 overflow-hidden">

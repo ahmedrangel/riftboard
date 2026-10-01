@@ -1,14 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  game: {
-    started: boolean;
-    startedAt: string;
-    dragonSoul: string;
-  };
-  teams: {
-    blue: { score: number, dragons: number, dragonTypes: string[], grubs: number, heralds: number, barons: number, turrets: number };
-    red: { score: number, dragons: number, dragonTypes: string[], grubs: number, heralds: number, barons: number, turrets: number };
-  };
+  game: GameData["game"];
+  teams: GameData["teams"];
   isMobile: boolean;
 }>();
 

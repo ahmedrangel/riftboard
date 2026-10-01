@@ -60,7 +60,7 @@ onMounted(async () => {
         <Icon name="material-symbols-light:data-usage" size="60" class="animate-spin inline-block" />
       </div>
       <div v-else-if="!loading">
-        <ScoreboardMain :data="data" :downscale="-5" is-mobile />
+        <ScoreboardMain :data="data" :downscale="1" is-mobile />
       </div>
     </ClientOnly>
   </UMain>
