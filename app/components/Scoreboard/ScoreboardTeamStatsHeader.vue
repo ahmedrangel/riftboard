@@ -27,7 +27,7 @@ const dragonSoulsIconMap = [
 const blueDragons = computed(() => props.teams.blue.dragonTypes?.filter(type => type !== "Elder") || []);
 const redDragons = computed(() => props.teams.red.dragonTypes?.filter(type => type !== "Elder") || []);
 
-const maxDragons = 4;
+const maxDragons = props.game.dragonSlots;
 
 const dragonSoul = computed(() => blueDragons.value.length > maxDragons - 1 || redDragons.value.length > maxDragons - 1 ? dragonSoulsIconMap.find(item => item.type === props.game.dragonSoul) : null);
 const dragonSoulNotConsumed = computed(() => blueDragons.value.length <= maxDragons - 1 && redDragons.value.length <= maxDragons - 1 && props.game.dragonSoul ? dragonSoulsIconMap.find(item => item.type === props.game.dragonSoul) : null);
@@ -44,9 +44,9 @@ onMounted(() => {
 <template>
   <div>
     <div class="scoreboard__top flex items-center justify-center border-b border-slate-500/40 gap-2 relative">
-      <div class="flex items-center py-5">
+      <div class="flex items-center py-6">
         <div class="ml-auto flex items-center gap-6 scale-x-[-1]">
-          <div v-for="dot in 4" :key="`blue-dragons-${dot}`" class="h-16 w-16 rounded-full border border-slate-800/80 bg-slate-950">
+          <div v-for="dot in maxDragons" :key="`blue-dragons-${dot}`" class="h-16 w-16 rounded-full border border-slate-800/80 bg-slate-950">
             <img
               v-if="dragonIconMap.find(item => item.type === blueDragons[dot - 1] as string) && teams.blue.dragonTypes[dot - 1] !== 'Elder'"
               :src="extAsset(dragonIconMap.find(item => item.type === blueDragons[dot - 1] as string)!.icon)"
@@ -56,14 +56,14 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="mx-6 flex h-16 w-16 rotate-45 items-center justify-center border-2 border-slate-300/50 bg-slate-950 overflow-hidden">
+      <div v-if="game.dragonSlots > 0" class="mx-6 flex h-16 w-16 rotate-45 items-center justify-center border-2 border-slate-300/50 bg-slate-950 overflow-hidden">
         <span class="-rotate-45">
           <img v-if="dragonSoul || dragonSoulNotConsumed" :src="extAsset(dragonSoul?.icon || dragonSoulNotConsumed!.icon)" class="h-full w-full scale-110" :class="{ grayscale: !dragonSoul && dragonSoulNotConsumed }" :title="dragonSoul?.title || dragonSoulNotConsumed?.title">
         </span>
       </div>
       <div class="flex items-center">
         <div class="flex items-center gap-6">
-          <div v-for="dot in 4" :key="`red-dragons-${dot}`" class="h-16 w-16 rounded-full border border-slate-800/80 bg-slate-950">
+          <div v-for="dot in maxDragons" :key="`red-dragons-${dot}`" class="h-16 w-16 rounded-full border border-slate-800/80 bg-slate-950">
             <img
               v-if="dragonIconMap.find(item => item.type === redDragons[dot - 1] as string) && teams.red.dragonTypes[dot - 1] !== 'Elder'"
               :src="extAsset(dragonIconMap.find(item => item.type === redDragons[dot - 1] as string)!.icon)"

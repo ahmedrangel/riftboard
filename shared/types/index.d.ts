@@ -10,6 +10,7 @@ declare global {
       version: string;
       started: boolean;
       startedAt: string;
+      dragonSlots: number;
       dragonSoul: string;
     };
     resources: {

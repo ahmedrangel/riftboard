@@ -20,9 +20,11 @@ const version = computed(() => props.version);
         </div>
       </div>
       <div class="flex shrink-0 flex-col gap-1">
-        <div v-for="rune in [player.runes.keystone, player.runes.secondaryRuneTree]" :key="`${player.riotIdGameName}-${rune.displayName}`" class="h-10 w-10 overflow-hidden">
-          <img v-if="rune" :src="getRuneIcon(cdn, rune.iconURL)" alt="" class="h-full w-full object-cover" :title="rune.displayName">
-        </div>
+        <template v-if="player.runes.keystone.iconURL && player.runes.primaryRuneTree.iconURL">
+          <div v-for="rune in [player.runes.keystone, player.runes.secondaryRuneTree]" :key="`${player.riotIdGameName}-${rune.displayName}`" class="h-10 w-10 overflow-hidden">
+            <img v-if="rune" :src="getRuneIcon(cdn, rune.iconURL)" alt="" class="h-full w-full object-cover" :title="rune.displayName">
+          </div>
+        </template>
       </div>
     </div>
     <div class="order-3 relative shrink-0">
