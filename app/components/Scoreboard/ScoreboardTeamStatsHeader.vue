@@ -81,13 +81,13 @@ onMounted(() => {
       </div>
     </div>
     <div v-if="!isMobile" class="scoreboard__stats grid grid-cols-[1fr_200px_1fr] border-b border-slate-500/30 py-4">
-      <ScoreboardEntityStats name="blue" :team="teams.blue" class="flex items-center gap-24 pl-24 text-3xl font-bold text-slate-100" />
+      <ScoreboardEntityStats name="blue" :team="teams.blue" class="flex items-center gap-24 pl-24 text-3xl font-bold text-slate-100" :dragon-slots="game.dragonSlots" />
       <div class="flex items-center justify-center text-4xl font-semibold">
         <div class="text-sky-400 w-40 tabular-nums text-center">{{ teams.blue.score }}</div>
         <div class="text-yellow-400 w-40 tabular-nums text-center">⚔</div>
         <div class="text-rose-400 w-40 tabular-nums text-center">{{ teams.red.score }}</div>
       </div>
-      <ScoreboardEntityStats name="red" :team="teams.red" reverse class="flex items-center gap-24 pl-24 text-3xl font-bold text-slate-100" />
+      <ScoreboardEntityStats name="red" :team="teams.red" reverse class="flex items-center gap-24 pl-24 text-3xl font-bold text-slate-100" :dragon-slots="game.dragonSlots" />
     </div>
   </div>
 </template>

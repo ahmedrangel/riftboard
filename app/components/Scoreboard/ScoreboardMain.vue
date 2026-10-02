@@ -41,13 +41,13 @@ const redPlayers = computed(() => props.data?.players.filter(player => player.te
         <div :class="isMobile ? 'scoreboard-mobile flex flex-col' : 'scoreboard grid grid-cols-2'">
           <div>
             <div class="min-w-0" :class="{ 'border-r border-slate-500/40': !isMobile }">
-              <ScoreboardEntityStats v-if="isMobile" name="blue" :team="data.teams.blue" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" />
+              <ScoreboardEntityStats v-if="isMobile" name="blue" :team="data.teams.blue" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" :dragon-slots="data.game.dragonSlots" />
               <ScoreboardPlayerRow :account="data.account" :players="bluePlayers" :cdn="data.resources.cdn" :version="data.game.version" />
             </div>
           </div>
           <div class="mt-auto">
             <div class="min-w-0">
-              <ScoreboardEntityStats v-if="isMobile" name="red" :team="data.teams.red" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" />
+              <ScoreboardEntityStats v-if="isMobile" name="red" :team="data.teams.red" class="bg-black/20 flex items-center justify-center py-5 gap-14 text-3xl font-bold text-slate-100" :dragon-slots="data.game.dragonSlots" />
               <ScoreboardPlayerRow :account="data.account" :players="redPlayers" :cdn="data.resources.cdn" :version="data.game.version" />
             </div>
           </div>
